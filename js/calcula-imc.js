@@ -33,9 +33,16 @@ for(i = 0; i < pacientes.length; i++){
     }
 
     if(pesoEhValido && alturaEhValida){
-        var imc = peso / (altura * altura);
-        tdimc.textContent = imc.toFixed(2);//toFixed() é uma funcao para formatar as casas decimais
+        var imc = calculaImc(peso, altura);
+        tdimc.textContent = imc;//toFixed() é uma funcao para formatar as casas decimais
     }
+}
+
+function calculaImc(peso, altura){
+    var imc = 0;
+
+    imc = peso / (altura * altura);
+    return imc.toFixed(2);
 }
 
 
