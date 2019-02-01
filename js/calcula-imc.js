@@ -15,17 +15,17 @@ for(i = 0; i < pacientes.length; i++){
 
         var tdimc = paciente.querySelector('.info-imc');
 
-        var pesoEhValido = true;
-        var alturaEhValida = true;
+        var pesoEhValido = validaPeso(peso);
+        var alturaEhValida = validaAltura(altura);
 
-    if(peso <= 0 || peso >= 1000){
+    if(!pesoEhValido){
         console.log('PESO INVALIDO');
         pesoEhValido = false;
         tdpeso.textContent = 'Peso invalido';
         paciente.classList.add('peso-invalido');
     }
 
-    if(altura <= 0 || altura >= 3.00){
+    if(!alturaEhValida){
         console.log('ALTURA INVALIDA');
         alturaEhValida = false;
         tdaltura.textContent = 'Altura invalida';
@@ -35,6 +35,22 @@ for(i = 0; i < pacientes.length; i++){
     if(pesoEhValido && alturaEhValida){
         var imc = calculaImc(peso, altura);
         tdimc.textContent = imc;//toFixed() é uma funcao para formatar as casas decimais
+    }
+}
+
+function validaPeso(peso){
+    if(peso >= 0 && peso <= 1000){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function validaAltura(altura){
+    if(altura >= 0 && altura <= 3.00){
+        return true;
+    }else{
+        return false;    
     }
 }
 
